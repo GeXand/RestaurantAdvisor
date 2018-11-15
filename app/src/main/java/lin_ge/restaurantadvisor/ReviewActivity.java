@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-public class ReviewAcitivity extends AppCompatActivity {
+public class ReviewActivity extends AppCompatActivity {
     private RatingBar mRBar = (RatingBar) findViewById(R.id.ratingBar);
     private Button mButton = (Button) findViewById(R.id.Submit);
     private TextView mTView = (TextView) findViewById(R.id.textView);
@@ -21,7 +21,8 @@ public class ReviewAcitivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mTView.setText(mEText.getText().toString());
+                //Take in Review list from Restaurant and add review to it
+                finish();
             }
         });
     }
