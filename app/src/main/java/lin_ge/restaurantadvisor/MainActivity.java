@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Login_System login;
+    public static Login_System login;//login system that holds all emails and passwords
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,16 +1,10 @@
 package lin_ge.restaurantadvisor;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-public class Reviews implements Serializable{
-
-    private static final long serialVersionUID = 1L;
+public class Reviews{
     private LinkedList<Review> list;//stores all reviews of restaurant
 
     public Reviews()
@@ -22,7 +16,7 @@ public class Reviews implements Serializable{
      * adds review to review list
      * @param review
      */
-    private void addReview(Review review)
+    public void addReview(Review review)
     {
         list.addLast(review);
     }
@@ -48,6 +42,14 @@ public class Reviews implements Serializable{
         list.removeLast();
     }
 
+    /**
+     * @return size of list
+     */
+    public int getSize()
+    {
+        return list.size();
+    }
+
     @Override
     /**
      * creates public representation of reviews
@@ -64,43 +66,10 @@ public class Reviews implements Serializable{
     }
 
     /**
-     * saves reviews for use later on
-     * @param review list of reviews
+     * @return iterator of list
      */
-    public static void serializeOBJ(Reviews review)
+    public Iterator<Review> getIterator()
     {
-        try
-        {
-            FileOutputStream file = new FileOutputStream("reviews.dat");
-            ObjectOutputStream out = new ObjectOutputStream(file);
-            out.writeObject(review);
-            out.close();
-            file.close();
-        }
-        catch(Exception e)
-        {
-            return;
-        }
-    }
-
-    /**
-     * @return obj of reviews for restaurant
-     */
-    public static Reviews deserializeOBJ()
-    {
-        Reviews review = new Reviews();
-        try
-        {
-            FileInputStream file = new FileInputStream("reviews.dat");
-            @SuppressWarnings("resource")
-            ObjectInputStream in = new ObjectInputStream(file);
-            review = (Reviews)in.readObject();
-        }
-        catch(Exception e)
-        {
-            return review;
-        }
-        return review;
+        return list.iterator();
     }
 }
-
