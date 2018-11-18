@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        login = Login_System.deserializeOBJ();
+        setContentView(R.layout.activity_review);
+       login = Login_System.deserializeOBJ();
 
         Button loginButton = (Button) findViewById(R.id.login);
         Button guestButton = (Button) findViewById(R.id.guest);
