@@ -185,6 +185,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
+            if(MainActivity.login.isThereUser(mAuthTask))
+                mAuthTask = MainActivity.login.findUser(mAuthTask);
+            else
+                MainActivity.login.addUser(mAuthTask);
+            Login_System.serializeOBJ(MainActivity.login);
             mAuthTask.execute((Void) null);
         }
     }
@@ -344,6 +349,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
+        }
+
+        @Override
+        public boolean equals(Object obj)
+        {
+            UserLoginTask user = (UserLoginTask) obj;
+            return user.mEmail.equals(mEmail) && user.mPassword.equals(mPassword);
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return mEmail.hashCode() + mPassword.hashCode();
         }
     }
 }
