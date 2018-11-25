@@ -11,9 +11,16 @@ import android.widget.SearchView;
 
 public class SearchActivity extends Activity {
 
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
+        setContentView(R.layout.activity_search);
         inflater.inflate(R.menu.options_menu, menu);
+
         // Associate searchable configuration with the SearchView
         SearchManager searchManager =
                 (SearchManager) getSystemService(Context.SEARCH_SERVICE);
