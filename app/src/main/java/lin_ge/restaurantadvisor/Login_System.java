@@ -1,33 +1,35 @@
 package lin_ge.restaurantadvisor;
 
+import android.util.Log;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Login_System implements Serializable{
 
-    private HashMap<String, String> logins;
+    private ArrayList<LoginActivity.UserLoginTask> logins;
 
     public Login_System()
     {
-        logins = new HashMap<String, String>();
+        logins = new ArrayList<LoginActivity.UserLoginTask>();
     }
 
     /**
-     * puts user into system if unique username
-     * @param username
-     * @param password
+     * checks if user is already in system
+     * @param user
      * @return whether put user in
      */
-    public boolean putUser(String username, String password)
+    public boolean isThereUser(LoginActivity.UserLoginTask user)
     {
-        if(logins.containsKey(username))
-            return false;
-        logins.put(username, password);
-        return true;
+        if(logins.contains(user))
+            return true;
+        return false;
     }
 
 
@@ -37,7 +39,7 @@ public class Login_System implements Serializable{
     @Override
     public String toString()
     {
-        return logins.entrySet().toString();
+        return logins.toString();
     }
 
     /**
@@ -81,15 +83,20 @@ public class Login_System implements Serializable{
         return log;
     }
 
-    /**
-     * when user login, method check if right login
-     * @param username
-     * @param password
-     * @return
-     */
-    public boolean isRight(String username, String password)
+    public void addUser(LoginActivity.UserLoginTask user)
     {
-        return logins.containsKey(username) && logins.containsValue(password);
+        logins.add(user);
+    }
+
+    public LoginActivity.UserLoginTask findUser(LoginActivity.UserLoginTask user)
+    {
+        for (LoginActivity.UserLoginTask use:logins) {
+
+            if(use.equals(user))
+                return use;
+
+        }
+        return null;
     }
 }
 
