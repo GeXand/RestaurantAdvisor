@@ -13,11 +13,11 @@ import java.util.HashMap;
 
 public class Login_System implements Serializable{
 
-    private ArrayList<LoginActivity.UserLoginTask> logins;
+    private HashMap<String, String>logins;
 
     public Login_System()
     {
-        logins = new ArrayList<LoginActivity.UserLoginTask>();
+        logins = new HashMap<String, String>();
     }
 
     /**
@@ -25,9 +25,9 @@ public class Login_System implements Serializable{
      * @param user
      * @return whether put user in
      */
-    public boolean isThereUser(LoginActivity.UserLoginTask user)
+    public boolean isThereUser(String user)
     {
-        if(logins.contains(user))
+        if(logins.containsKey(user))
             return true;
         return false;
     }
@@ -83,20 +83,14 @@ public class Login_System implements Serializable{
         return log;
     }
 
-    public void addUser(LoginActivity.UserLoginTask user)
+    public void addUser(String username, String password)
     {
-        logins.add(user);
+        logins.put(username, password);
     }
 
-    public LoginActivity.UserLoginTask findUser(LoginActivity.UserLoginTask user)
+    public String findUser (String user)
     {
-        for (LoginActivity.UserLoginTask use:logins) {
-
-            if(use.equals(user))
-                return use;
-
-        }
-        return null;
+      return logins.get(user);
     }
 }
 

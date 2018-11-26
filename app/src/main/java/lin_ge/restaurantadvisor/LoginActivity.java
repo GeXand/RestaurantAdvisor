@@ -175,6 +175,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView = mEmailView;
             cancel = true;
         }
+        else if(MainActivity.login.isThereUser(email))
+        {
+            String origPassword = MainActivity.login.findUser(email);
+            if(!origPassword.equals(password))
+            {
+                mEmailView.setError("There is already a user that uses this email");
+                focusView = mEmailView;
+                cancel = true;
+            }
+        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -185,10 +195,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
-            if(MainActivity.login.isThereUser(mAuthTask))
-                mAuthTask = MainActivity.login.findUser(mAuthTask);
-            else
-                MainActivity.login.addUser(mAuthTask);
+            if(!MainActivity.login.isThereUser(email))
+                MainActivity.login.addUser(email, password);
             Login_System.serializeOBJ(MainActivity.login);
             mAuthTask.execute((Void) null);
         }
