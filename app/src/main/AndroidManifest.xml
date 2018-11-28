@@ -65,7 +65,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
-        <activity android:name=".FoodListActivity"
+        <activity
+            android:name=".FoodListActivity"
             android:label="List Food"
             android:parentActivityName=".RestaurantActivity"
             android:exported="true">
@@ -73,10 +74,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
-        <activity android:name=".FoodListViewActivity"
+        <activity
+            android:name=".FoodListViewActivity"
             android:label="See Food"
             android:exported="true">
             <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
     </application>
