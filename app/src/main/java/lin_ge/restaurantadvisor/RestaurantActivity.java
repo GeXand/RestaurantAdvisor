@@ -12,6 +12,8 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Queue;
 
 public class RestaurantActivity extends AppCompatActivity {
 
@@ -24,11 +26,12 @@ public class RestaurantActivity extends AppCompatActivity {
     private RatingBar reviewRatingBar;
     private Button addReview;
     private TextView review;
-    private ArrayList<String> reviews;
+    private ArrayList<String> writing;
     private static int index = 0;
     private ArrayList<Float> rating;
     private static int size = 3;
     private Restaurant restaurant;
+    DSUnboundedQueue<Review> reviews;
 
 
     @Override
@@ -45,9 +48,10 @@ public class RestaurantActivity extends AppCompatActivity {
         descript = findViewById(R.id.description);
         reviewRatingBar = findViewById(R.id.reviewRatingBar);
         review = findViewById(R.id.review);
-        reviews = new ArrayList<String>();
+        writing = new ArrayList<String>();
         rating = new ArrayList<Float>();
         restaurant = (Restaurant) getIntent().getSerializableExtra("RestaurantClick");
+        reviews = new DSUnboundedQueue<Review>();
 
         getRestaurantDetail();
 
@@ -71,7 +75,7 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View v) {
                 index = changeIndex("previous");
                 reviewRatingBar.setRating(rating.get(index));
-                review.setText(reviews.get(index));
+                review.setText(writing.get(index));
             }
         });
 
@@ -80,7 +84,7 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onClick(View v) {
                 index = changeIndex("Next");
                 reviewRatingBar.setRating(rating.get(index));
-                review.setText(reviews.get(index));
+                review.setText(writing.get(index));
             }
         });
     }
@@ -88,10 +92,12 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private void getRestaurantDetail()
     {
-        //getRestaurantReviews(restaurant.getID());
-        restaurantRatingBar.setRating(2);
-        descript.setText("Address Hello Staple \n Steam");
-        name.setText("My Name");
+        getRestaurantReviews(restaurant.getID());
+        if(!reviews.isEmpty())
+            changeRestaurantRating();
+        restaurantRatingBar.setRating(restaurant.getRating());
+        descript.setText(restaurant.toDescription());
+        name.setText(restaurant.getName());
     }
 
     private int changeIndex(String way)
@@ -108,5 +114,24 @@ public class RestaurantActivity extends AppCompatActivity {
         }
     }
 
-    //private
+    private void getRestaurantReviews(int id)
+    {
+        Iterator<Review> revs= MainActivity.reviews.getIterator();
+        while(revs.hasNext())
+        {
+            Review rev = revs.next();
+            if(rev.getID() == restaurant.getID())
+                reviews.enqueue(rev);
+        }
+    }
+
+    private void changeRestaurantRating()
+    {
+        DSUnboundedQueue<Review> temp = new DSUnboundedQueue<Review>();
+        while(!reviews.isEmpty())
+        {
+            Review secondaryReview = reviews.dequeue();
+            //add more
+        }
+    }
 }
