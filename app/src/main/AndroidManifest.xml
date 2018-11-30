@@ -46,6 +46,7 @@
         </activity>
         <activity
             android:name=".SearchResultsActivity"
+            android:exported="true"
             android:label="Restaurants">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -53,6 +54,7 @@
         </activity>
         <activity
             android:name=".RestaurantActivity"
+            android:exported="true"
             android:label="Restaurant"
             android:theme="@style/AppTheme.NoActionBar">
 
