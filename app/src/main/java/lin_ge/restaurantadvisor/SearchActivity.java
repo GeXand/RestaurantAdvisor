@@ -5,15 +5,24 @@ import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.widget.ListView;
 import android.widget.SearchView;
 
-public class SearchActivity extends Activity {
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class SearchActivity extends AppCompatActivity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        ListView listView = (ListView) findViewById(R.id.listViewSuggested);
+        ArrayList<Restaurant> suggestedRestaurants = new ArrayList<>();
+
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
