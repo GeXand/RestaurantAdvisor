@@ -10,7 +10,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
-public class DatabaseTable {
+public class RestaurantDatabase {
 
     private static final String TAG = "RestaurantDatabase";
 
@@ -31,7 +31,7 @@ public class DatabaseTable {
 
     private final DatabaseOpenHelper mDatabaseOpenHelper;
 
-    public DatabaseTable(Context context) {
+    public RestaurantDatabase(Context context) {
         mDatabaseOpenHelper = new DatabaseOpenHelper(context);
     }
 
