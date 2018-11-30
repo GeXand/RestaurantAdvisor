@@ -1,8 +1,10 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.components;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+
+import lin_ge.restaurantadvisor.components.Review;
 
 public class Reviews{
     private LinkedList<Review> list;//stores all reviews of restaurant

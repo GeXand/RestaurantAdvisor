@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.databases;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.util.Log;
 
 import java.io.IOException;
+
+import lin_ge.restaurantadvisor.components.Restaurant;
 
 public class RestaurantDatabase {
 
@@ -23,7 +25,6 @@ public class RestaurantDatabase {
     public static final String COL_DININGTYPE = "DININGTYPE";
     public static final String COL_CUISINETYPE = "CUISINETYPE";
     public static final String COL_PRICERANGE = "PRICERANGE";
-    public static final String COL_REVIEWS = "REVIEWS";
 
     private static final String DATABASE_NAME = "RESTAURANTS";
     private static final String FTS_VIRTUAL_TABLE = "FTS";
@@ -73,8 +74,7 @@ public class RestaurantDatabase {
                         COL_HOURS + ", " +
                         COL_DININGTYPE + ", " +
                         COL_CUISINETYPE + ", " +
-                        COL_PRICERANGE + ", " +
-                        COL_REVIEWS + ")";
+                        COL_PRICERANGE + ") ";
 
         DatabaseOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -122,7 +122,6 @@ public class RestaurantDatabase {
             initialValues.put(COL_DININGTYPE, restaurant.getTypeOfDining());
             initialValues.put(COL_CUISINETYPE, restaurant.getTypeOfCuisine());
             initialValues.put(COL_PRICERANGE, restaurant.priceRange());
-            initialValues.put(COL_REVIEWS, restaurant.getReviews().toString());
 
             return mDatabase.insert(FTS_VIRTUAL_TABLE, null, initialValues);
         }

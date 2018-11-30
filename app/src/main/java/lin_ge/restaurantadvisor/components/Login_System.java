@@ -1,14 +1,10 @@
-package lin_ge.restaurantadvisor;
-
-import android.util.Log;
+package lin_ge.restaurantadvisor.components;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 
 public class Login_System implements Serializable{

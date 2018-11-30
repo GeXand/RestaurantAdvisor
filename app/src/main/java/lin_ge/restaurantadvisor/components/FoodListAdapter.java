@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.components;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -11,6 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.FoodItems;
 
 
 public class FoodListAdapter extends ArrayAdapter<FoodItems> {

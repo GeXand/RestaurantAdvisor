@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.data.structures;
 
 public class QueueOverflowException extends RuntimeException{
 

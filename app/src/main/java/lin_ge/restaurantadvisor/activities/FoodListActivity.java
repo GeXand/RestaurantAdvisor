@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import lin_ge.restaurantadvisor.components.FoodItems;
+import lin_ge.restaurantadvisor.components.FoodListAdapter;
+import lin_ge.restaurantadvisor.R;
 
 public class FoodListActivity extends AppCompatActivity {
     private ListView listView;

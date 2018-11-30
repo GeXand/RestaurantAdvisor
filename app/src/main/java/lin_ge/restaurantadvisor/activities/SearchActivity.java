@@ -1,7 +1,5 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
-import android.app.Activity;
-import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,7 +10,9 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.Restaurant;
 
 public class SearchActivity extends AppCompatActivity {
 
