@@ -9,12 +9,14 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     public static Login_System login;//login system that holds all emails and passwords
+    public static Reviews reviews;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        login = Login_System.deserializeOBJ();
+       reviews = Review.deserializeOBJ();
 
         Button loginButton = (Button) findViewById(R.id.login);
         Button guestButton = (Button) findViewById(R.id.guest);

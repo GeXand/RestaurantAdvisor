@@ -52,5 +52,20 @@ public class PriorityQueue {
         }
         return false;
     }
+
+    public Restaurant get(String search, Comparator<String> c)
+    {
+        if(isEmpty())
+            return null;
+        for(int i = 0; i < list.size(); i++)
+        {
+            Restaurant temp = list.get(i);
+            if(c.compare(temp.toString(), search) > 0)
+            {
+                return temp;
+            }
+        }
+        return null;
+    }
 }
 

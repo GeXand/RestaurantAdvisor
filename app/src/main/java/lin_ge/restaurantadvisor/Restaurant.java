@@ -91,8 +91,15 @@ public class Restaurant{
 
     public String toString()
     {
-        return name + "\n" + "email:" + email + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
-                 typeOfDining + "\n" + "priceRange" + priceRange + " rating" +
+        return name + "" + "email:" + email + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
+                 typeOfDining + "" + "priceRange" + priceRange + " rating" +
                 rating + " hour of operations" + hourOfOperation;
+    }
+
+    public String toDescription()
+    {
+        return "email: " + email + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
+                typeOfDining + "\n" + "priceRange: " + priceRange + "\nrating: " +
+                rating + "\nhour of operations: " + hourOfOperation;
     }
 }
