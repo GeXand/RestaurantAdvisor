@@ -14,15 +14,27 @@ public class Review implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    private String user;
     private String text;
     private int rating; //0-5
+    private int restaurantID;
 
     public Review()
     {
         text = new String();
         rating = 0;
     }
+
+    public Review(String username, String reviewText, int rate, int id) {
+        user = username;
+        text = reviewText;
+        rating = rate;
+        restaurantID = id;
+    }
+
+    public String getUser() { return user; }
+
+    public int getRestaurantID() { return restaurantID; }
 
     /**
      * gets the text
@@ -98,7 +110,7 @@ public class Review implements Serializable{
      */
     public int getID()
     {
-        return id;
+        return restaurantID;
     }
 
     /**
