@@ -5,7 +5,10 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -34,6 +37,11 @@ public class Review implements Serializable{
         rating = rate;
         restaurantID = id;
         date = LocalDate.now();
+    }
+
+    public String getDate() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        return date.format(dtf);
     }
 
     public String getUser() { return user; }

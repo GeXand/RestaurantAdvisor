@@ -22,6 +22,7 @@ public class ReviewDatabase {
     public static final String COL_REVIEWTEXT = "REVIEWTEXT";
     public static final String COL_RATING = "RATING";
     public static final String COL_RESTAURANTID = "RESTAURANTID";
+    public static final String COL_DATE = "DATE";
 
     private static final String DATABASE_NAME = "REVIEWS";
     private static final String FTS_VIRTUAL_TABLE = "FTS";
@@ -67,7 +68,8 @@ public class ReviewDatabase {
                         COL_USERNAME + ", " +
                         COL_REVIEWTEXT + ", " +
                         COL_RATING + ", " +
-                        COL_RESTAURANTID + ") ";
+                        COL_RESTAURANTID + ", " +
+                        COL_DATE + ") ";
 
         DatabaseOpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -111,6 +113,7 @@ public class ReviewDatabase {
             initialValues.put(COL_REVIEWTEXT, review.getText());
             initialValues.put(COL_RATING, review.getRating());
             initialValues.put(COL_RESTAURANTID, review.getRestaurantID());
+            initialValues.put(COL_DATE, review.getDate());
 
             return mDatabase.insert(FTS_VIRTUAL_TABLE, null, initialValues);
         }
