@@ -89,7 +89,7 @@ public class ReviewDatabase {
             onCreate(db);
         }
 
-        private void loadRestaurants() {
+        private void loadReviews() {
             new Thread(new Runnable() {
                 public void run() {
                     try {

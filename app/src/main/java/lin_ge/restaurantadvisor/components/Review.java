@@ -5,6 +5,8 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Iterator;
 
 //sources
@@ -18,6 +20,7 @@ public class Review implements Serializable{
     private String text;
     private int rating; //0-5
     private int restaurantID;
+    private LocalDate date;
 
     public Review()
     {
@@ -30,6 +33,7 @@ public class Review implements Serializable{
         text = reviewText;
         rating = rate;
         restaurantID = id;
+        date = LocalDate.now();
     }
 
     public String getUser() { return user; }
@@ -82,61 +86,10 @@ public class Review implements Serializable{
     }
 
     /**
-     * saves reviews for use later on
-     * @param review
-     */
-    public static void serializeOBJ(Reviews review)
-    {
-        try
-        {
-            FileOutputStream file = new FileOutputStream("review.dat");
-            ObjectOutputStream out = new ObjectOutputStream(file);
-            Iterator<Review> iterator = review.getIterator();
-            while(iterator.hasNext())
-            {
-                out.writeObject(iterator.next());
-            }
-            out.close();
-            file.close();
-        }
-        catch(Exception e)
-        {
-            return;
-        }
-    }
-
-    /**
      * @return restaurantID
      */
     public int getID()
     {
         return restaurantID;
-    }
-
-    /**
-     * @return obj of reviews
-     */
-    public static Reviews deserializeOBJ()
-    {
-        Reviews review = new Reviews();
-        try
-        {
-            FileInputStream file = new FileInputStream("review.dat");
-            boolean cont = true;
-            @SuppressWarnings("resource")
-            ObjectInputStream input = new ObjectInputStream(file);
-            while(cont){
-                Review obj = (Review) input.readObject();
-                if(obj != null)
-                    review.addReview(obj);
-                else
-                    cont = false;
-            }
-        }
-        catch(Exception e)
-        {
-            return review;
-        }
-        return review;
     }
 }
