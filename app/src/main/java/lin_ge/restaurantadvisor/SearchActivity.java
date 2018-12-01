@@ -15,7 +15,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     ListView list;
     RestaurantListViewAdapter adapter;
     SearchView editsearch;
-    String[] restaurantNameList;
+    public static Restaurant restaurants;
     ArrayList<Restaurant> arraylist = new ArrayList<Restaurant>();
 
     @Override
@@ -47,7 +47,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                intent.putExtra("restaurant_Data", arraylist.get(position));
+                restaurants = arraylist.get(position);
                 startActivity(intent);
             }
         });

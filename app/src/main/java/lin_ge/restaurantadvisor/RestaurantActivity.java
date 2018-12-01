@@ -25,6 +25,7 @@ public class RestaurantActivity extends AppCompatActivity {
     private static int index = 0;
     private ArrayList<Float> rating;
     private static int size = 3;
+    private static Restaurant restaurant;
 
 
     @Override
@@ -43,6 +44,7 @@ public class RestaurantActivity extends AppCompatActivity {
         review = findViewById(R.id.review);
         reviews = new ArrayList<String>();
         rating = new ArrayList<Float>();
+        restaurant = SearchActivity.restaurants;
 
         getRestaurantDetail();
 
@@ -56,14 +58,9 @@ public class RestaurantActivity extends AppCompatActivity {
         order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //try {
-                //startActivity(new Intent(getApplicationContext(), OrderActivity.class));
 
                 startActivity(new Intent(getApplicationContext(), FoodListActivity.class));
-                //} catch (Exception e)
-                //{
-                //   e.printStackTrace();
-                // }
+
             }
         });
 
@@ -89,9 +86,9 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private void getRestaurantDetail()
     {
-        restaurantRatingBar.setRating(2);
-        descript.setText("Address Hello Staple \n Steam");
-        name.setText("My Name");
+        restaurantRatingBar.setRating(restaurant.getRating());
+        descript.setText(restaurant.toDescription());
+        name.setText(restaurant.getName());
     }
 
     private int changeIndex(String way)

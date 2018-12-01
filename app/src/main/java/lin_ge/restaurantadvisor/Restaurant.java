@@ -100,7 +100,6 @@ public class Restaurant implements Serializable {
     public String toDescription()
     {
         return "email: " + email + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
-                typeOfDining + "\n" + "priceRange: " + priceRange + "\nrating: " +
-                rating + "\nhour of operations: " + hourOfOperation;
+                typeOfDining + "\n" + "priceRange: " + priceRange + "\nhour of operations: " + hourOfOperation;
     }
 }
