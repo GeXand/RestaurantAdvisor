@@ -1,9 +1,9 @@
-package lin_ge.restaurantadvisor.data.structures;
+package lin_ge.restaurantadvisor;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
-import lin_ge.restaurantadvisor.components.Restaurant;
+import lin_ge.restaurantadvisor.Restaurant;
 
 public class PriorityQueue {
 

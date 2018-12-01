@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor.activities;
+package lin_ge.restaurantadvisor;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
