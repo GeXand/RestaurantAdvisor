@@ -39,6 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity  {
 
+    public static final String USER_EMAIL = "USER_EMAIL";
     private EditText email;
     private EditText password;
     private Button login;
@@ -62,7 +63,12 @@ public class LoginActivity extends AppCompatActivity  {
             {
                 attemptLogin(email.getText().toString(), password.getText().toString());
                 if(!canceled)
-                    startActivity(new Intent(LoginActivity.this, SearchActivity.class));
+                {
+                    Intent i = new Intent(LoginActivity.this, SearchActivity.class);
+                    i.putExtra(LoginActivity.USER_EMAIL, email.getText());
+                    startActivity(i);
+                }
+
                 else {
                     if(!(MainActivity.login.isThereUser(email.toString()) && MainActivity.login.findUser(email.toString()).equals((password))))
                         MainActivity.login.addUser(email.toString(),password.toString());

@@ -121,7 +121,7 @@ public class RestaurantDatabase {
             initialValues.put(COL_HOURS, restaurant.getHourOfOperation());
             initialValues.put(COL_DININGTYPE, restaurant.getTypeOfDining());
             initialValues.put(COL_CUISINETYPE, restaurant.getTypeOfCuisine());
-            initialValues.put(COL_PRICERANGE, restaurant.priceRange());
+            initialValues.put(COL_PRICERANGE, restaurant.getPriceRange());
 
             return mDatabase.insert(FTS_VIRTUAL_TABLE, null, initialValues);
         }

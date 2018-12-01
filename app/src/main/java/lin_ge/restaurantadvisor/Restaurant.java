@@ -1,8 +1,9 @@
 package lin_ge.restaurantadvisor;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Restaurant{
+public class Restaurant implements Serializable {
     private String email;
     private String name;
     private int id;//predetermined
@@ -69,7 +70,7 @@ public class Restaurant{
         return typeOfCuisine;
     }
 
-    public String priceRange()
+    public String getPriceRange()
     {
         return priceRange;
     }

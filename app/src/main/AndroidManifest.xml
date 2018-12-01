@@ -52,31 +52,33 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".ReviewActivity"
+        <activity
+            android:name=".ReviewActivity"
+            android:exported="true"
             android:label="Add Review"
-            android:parentActivityName=".RestaurantActivity"
-            android:exported="true">
+            android:parentActivityName=".RestaurantActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
         <activity
             android:name=".FoodListActivity"
+            android:exported="true"
             android:label="List Food"
-            android:parentActivityName=".RestaurantActivity"
-            android:exported="true">
+            android:parentActivityName=".RestaurantActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
         <activity
             android:name=".FoodListViewActivity"
-            android:label="See Food"
-            android:exported="true">
+            android:exported="true"
+            android:label="See Food">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.RestaurantActivity" />
         </activity>
+        <activity android:name=".RestaurantActivity"></activity>
     </application>
 
 </manifest>
