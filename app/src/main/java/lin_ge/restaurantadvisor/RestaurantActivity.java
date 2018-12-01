@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -24,8 +25,9 @@ public class RestaurantActivity extends AppCompatActivity {
     private ArrayList<String> reviews;
     private static int index = 0;
     private ArrayList<Float> rating;
-    private static int size = 3;
+    private static int size = 0;
     private static Restaurant restaurant;
+    public static ArrayList<FoodItems> food;
 
 
     @Override
@@ -45,15 +47,11 @@ public class RestaurantActivity extends AppCompatActivity {
         reviews = new ArrayList<String>();
         rating = new ArrayList<Float>();
         restaurant = SearchActivity.restaurants;
+        food = restaurant.getFood();
+        addReview = findViewById(R.id.addReview);
 
         getRestaurantDetail();
 
-        reviews.add("Hello");
-        reviews.add("Hi");
-        reviews.add("Happy");
-        rating.add(1.0F);
-        rating.add(2.0F);
-        rating.add(3.0F);
 
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,8 +66,12 @@ public class RestaurantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 index = changeIndex("previous");
-                reviewRatingBar.setRating(rating.get(index));
-                review.setText(reviews.get(index));
+                if(index != -1) {
+                    reviewRatingBar.setRating(rating.get(index));
+                    review.setText(reviews.get(index));
+                }
+                else
+                    index = 0;
             }
         });
 
@@ -77,8 +79,19 @@ public class RestaurantActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 index = changeIndex("Next");
-                reviewRatingBar.setRating(rating.get(index));
-                review.setText(reviews.get(index));
+                if(index != -1) {
+                    reviewRatingBar.setRating(rating.get(index));
+                    review.setText(reviews.get(index));
+                }
+                else
+                    index = 0;
+            }
+        });
+
+        addReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ReviewActivity.class));
             }
         });
     }
@@ -93,6 +106,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private int changeIndex(String way)
     {
+        if(size == 0) return -1;
         if(way.equals("previous")) {
             index -= 1;
             if(index == -1)
