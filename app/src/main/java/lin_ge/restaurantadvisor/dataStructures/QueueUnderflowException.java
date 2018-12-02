@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.dataStructures;
 
 public class QueueUnderflowException extends RuntimeException{
 

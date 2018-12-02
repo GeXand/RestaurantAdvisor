@@ -1,7 +1,9 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.components;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import lin_ge.restaurantadvisor.components.FoodItems;
 
 public class Restaurant implements Serializable {
     private String email;

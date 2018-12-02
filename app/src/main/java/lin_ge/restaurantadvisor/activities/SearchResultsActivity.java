@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
 import android.app.Activity;
 import android.app.SearchManager;

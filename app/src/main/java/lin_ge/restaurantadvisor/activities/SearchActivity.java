@@ -1,4 +1,4 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,12 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+
+import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.activities.LoginActivity;
+import lin_ge.restaurantadvisor.activities.RestaurantActivity;
+import lin_ge.restaurantadvisor.activities.RestaurantListViewAdapter;
+import lin_ge.restaurantadvisor.components.Restaurant;
 
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 

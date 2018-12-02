@@ -1,6 +1,5 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
+import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.Review;
 
 public class ReviewActivity extends AppCompatActivity {
     private RatingBar mRBar;

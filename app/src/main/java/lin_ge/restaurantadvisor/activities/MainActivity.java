@@ -1,10 +1,15 @@
-package lin_ge.restaurantadvisor;
+package lin_ge.restaurantadvisor.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.Review;
+import lin_ge.restaurantadvisor.components.Login_System;
+import lin_ge.restaurantadvisor.dataStructures.DSUnboundedQueue;
 
 public class MainActivity extends AppCompatActivity {
 

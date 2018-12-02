@@ -10,7 +10,7 @@ import android.util.Log;
 
 import java.io.IOException;
 
-import lin_ge.restaurantadvisor.Review;
+import lin_ge.restaurantadvisor.components.Review;
 
 public class ReviewDatabase {
 
