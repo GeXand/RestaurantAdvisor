@@ -51,8 +51,13 @@ public class RestaurantActivity extends AppCompatActivity {
         review = findViewById(R.id.review);
         writing = new ArrayList<String>();
         rating = new ArrayList<Float>();
-        restaurant = (Restaurant) getIntent().getSerializableExtra("RestaurantClick");
-        reviews = new DSUnboundedQueue<Review>();
+        //restaurant = (Restaurant) getIntent().getSerializableExtra("RestaurantClick");
+        ArrayList<Review> reviews = new ArrayList<Review>();
+        reviews.add(new Review("Bob", "Solid restaurant with good service. Wait times are okay.", 4,0));
+        reviews.add(new Review("Bill", "Favorite place ever! The fries are the best.", 5,0));
+        reviews.add(new Review("Ben", "Had a great night with friends here. Long wait but was mostly worth it.", 4,0));
+        restaurant = new Restaurant("Maxim's", 0, 4, "2627834501", "6AM-10PM", "Late-night", "American Comfort Food","$$", "N/A", reviews);
+
 
         getRestaurantDetail();
 
@@ -93,7 +98,7 @@ public class RestaurantActivity extends AppCompatActivity {
 
     private void getRestaurantDetail()
     {
-        getRestaurantReviews(restaurant.getID());
+        getRestaurantReviews();
         if(!reviews.isEmpty())
             changeRestaurantRating();
         restaurantRatingBar.setRating(restaurant.getRating());
@@ -115,14 +120,10 @@ public class RestaurantActivity extends AppCompatActivity {
         }
     }
 
-    private void getRestaurantReviews(int id)
+    private void getRestaurantReviews()
     {
-        Iterator<Review> revs= MainActivity.reviews.getIterator();
-        while(revs.hasNext())
-        {
-            Review rev = revs.next();
-            if(rev.getID() == restaurant.getID())
-                reviews.enqueue(rev);
+        for (Review r : restaurant.getReviews()) {
+            reviews.enqueue(r);
         }
     }
 

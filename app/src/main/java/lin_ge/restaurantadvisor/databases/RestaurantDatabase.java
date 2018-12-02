@@ -85,7 +85,7 @@ public class RestaurantDatabase {
         public void onCreate(SQLiteDatabase db) {
             mDatabase = db;
             mDatabase.execSQL(FTS_TABLE_CREATE);
-            addRestaurant(new Restaurant("Maxim's", 0, 4, "2627834501", "6AM-10PM", "Late-night", "American Comfort Food","$$", "N/A"));
+
         }
 
         @Override

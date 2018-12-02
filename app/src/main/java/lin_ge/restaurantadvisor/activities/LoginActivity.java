@@ -31,7 +31,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import lin_ge.restaurantadvisor.components.Login_System;
 import lin_ge.restaurantadvisor.R;
 
 import static android.Manifest.permission.READ_CONTACTS;

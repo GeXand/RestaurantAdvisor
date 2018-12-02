@@ -13,9 +13,9 @@ public class Restaurant{
     private String typeOfCuisine;
     private String priceRange;
     private ArrayList<FoodItems> food;
-    private Reviews reviews;//this contains all reviews so we will need to sort them by id for the restaurant
+    private ArrayList<Review> reviews;//this contains all reviews so we will need to sort them by id for the restaurant
 
-    public Restaurant(String name, int id, int rating, String phoneNumber, String hourOfOperation, String typeOfDining, String typeOfCuisine, String priceRange, String email)
+    public Restaurant(String name, int id, int rating, String phoneNumber, String hourOfOperation, String typeOfDining, String typeOfCuisine, String priceRange, String email, ArrayList<Review> reviews)
     {
         this.name = name;
         this.id = id;
@@ -27,7 +27,7 @@ public class Restaurant{
         this.typeOfCuisine = typeOfCuisine;
         this.priceRange = priceRange;
         food = new ArrayList<FoodItems>();
-        reviews = Review.deserializeOBJ();
+        this.reviews = reviews;
     }
 
     public String getName()
@@ -84,7 +84,7 @@ public class Restaurant{
         return food;
     }
 
-    public Reviews getReviews()
+    public ArrayList<Review> getReviews()
     {
         return reviews;
     }
