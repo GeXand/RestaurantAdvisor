@@ -16,7 +16,7 @@ public class Review implements Serializable{
 
     private String user;
     private String text;
-    private int rating; //0-5
+    private float rating; //0-5
     private int restaurantID;
 
     public Review()
@@ -25,7 +25,7 @@ public class Review implements Serializable{
         rating = 0;
     }
 
-    public Review(String username, String reviewText, int rate, int id) {
+    public Review(String username, String reviewText, float rate, int id) {
         user = username;
         text = reviewText;
         rating = rate;
@@ -46,6 +46,15 @@ public class Review implements Serializable{
     }
 
     /**
+     * get full text
+     * @return full text
+     */
+    public String getReviewText()
+    {
+        return user + ": " + text;
+    }
+
+    /**
      * sets review to text
      * @param text
      */
@@ -58,7 +67,7 @@ public class Review implements Serializable{
      * get reviewer rating
      * @return rating
      */
-    public int getRating()
+    public float getRating()
     {
         return rating;
     }
@@ -81,62 +90,4 @@ public class Review implements Serializable{
         return rating + "\n" + text;
     }
 
-    /**
-     * saves reviews for use later on
-     * @param review
-     */
-    public static void serializeOBJ(Reviews review)
-    {
-        try
-        {
-            FileOutputStream file = new FileOutputStream("review.dat");
-            ObjectOutputStream out = new ObjectOutputStream(file);
-            Iterator<Review> iterator = review.getIterator();
-            while(iterator.hasNext())
-            {
-                out.writeObject(iterator.next());
-            }
-            out.close();
-            file.close();
-        }
-        catch(Exception e)
-        {
-            return;
-        }
-    }
-
-    /**
-     * @return restaurantID
-     */
-    public int getID()
-    {
-        return restaurantID;
-    }
-
-    /**
-     * @return obj of reviews
-     */
-    public static Reviews deserializeOBJ()
-    {
-        Reviews review = new Reviews();
-        try
-        {
-            FileInputStream file = new FileInputStream("review.dat");
-            boolean cont = true;
-            @SuppressWarnings("resource")
-            ObjectInputStream input = new ObjectInputStream(file);
-            while(cont){
-                Review obj = (Review) input.readObject();
-                if(obj != null)
-                    review.addReview(obj);
-                else
-                    cont = false;
-            }
-        }
-        catch(Exception e)
-        {
-            return review;
-        }
-        return review;
-    }
 }

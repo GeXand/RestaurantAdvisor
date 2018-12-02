@@ -1,5 +1,6 @@
 package lin_ge.restaurantadvisor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 
 public class RestaurantActivity extends AppCompatActivity {
 
+    public final int REQUEST_CODE = 1;
+
     private Button order;
     private Button prev;
     private Button next;
@@ -22,10 +25,10 @@ public class RestaurantActivity extends AppCompatActivity {
     private RatingBar reviewRatingBar;
     private Button addReview;
     private TextView review;
-    private ArrayList<String> reviews;
+    public static ArrayList<String> reviews;
     private static int index = 0;
-    private ArrayList<Float> rating;
-    private static int size = 0;
+    public static ArrayList<Float> rating;
+    public static int size = 0;
     private static Restaurant restaurant;
     public static ArrayList<FoodItems> food;
 
@@ -51,7 +54,7 @@ public class RestaurantActivity extends AppCompatActivity {
         addReview = findViewById(R.id.addReview);
 
         getRestaurantDetail();
-
+        getReviews();
 
         order.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,11 +94,34 @@ public class RestaurantActivity extends AppCompatActivity {
         addReview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), ReviewActivity.class));
+                startActivityForResult(new Intent(RestaurantActivity.this, ReviewActivity.class), 1);
             }
         });
     }
 
+    //startActivityForResult(Intent intent, int REQUEST_CODE);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+
+        if(requestCode == 1)
+        {
+            switch(resultCode)
+            {
+                case RESULT_OK:
+                    this.getReviews();
+                    index = changeIndex("Next");
+                    if(index != -1) {
+                        reviewRatingBar.setRating(rating.get(index));
+                        review.setText(reviews.get(index));
+                    }
+                    else
+                        index = 0;
+            }
+        }
+
+
+    }
 
     private void getRestaurantDetail()
     {
@@ -117,5 +143,23 @@ public class RestaurantActivity extends AppCompatActivity {
             index = (index+1)%size;
             return index;
         }
+    }
+
+    public void getReviews()
+    {
+        reviews.clear();
+        rating.clear();
+        size = MainActivity.reviews.size();
+        for(int i = 0; i < size; i++)
+        {
+            Review temp = MainActivity.reviews.dequeue();
+            if(temp.getRestaurantID() == restaurant.getID()) {
+                reviews.add(temp.getText());
+                rating.add((float)temp.getRating());
+            }
+            MainActivity.reviews.enqueue(temp);
+        }
+        if(size != 0)
+            changeIndex("Next");
     }
 }

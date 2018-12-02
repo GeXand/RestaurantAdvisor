@@ -1,5 +1,6 @@
 package lin_ge.restaurantadvisor;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,12 +27,21 @@ public class ReviewActivity extends AppCompatActivity {
         mTView = (TextView) findViewById(R.id.textView);
         mEText = (EditText) findViewById(R.id.editText);
 
+
+        mTView.setText("Write a Review");
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Take in Review list from Restaurant and add review to it
-                finish();
+                //Add to all review list
+                Review temp = new Review(LoginActivity.USER_EMAIL,mEText.getText().toString(),mRBar.getRating(), SearchActivity.restaurants.getID());
+                MainActivity.reviews.enqueue(temp);
+
+                Intent intent = new Intent();
                 //startActivity(new Intent(ReviewActivity.this, RestaurantActivity.class));
+                setResult(RESULT_OK);
+
+                finish();
             }
         });
     }

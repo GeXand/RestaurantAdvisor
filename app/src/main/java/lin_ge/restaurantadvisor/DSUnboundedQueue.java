@@ -38,8 +38,9 @@ public class DSUnboundedQueue<T> {
         {
             grow();
         }
-        rear = (rear + 1) % elements.length;
+        rear = (rear) % elements.length;
         elements[rear] = (T) element;
+        rear++;
         numElements ++;
     }
 

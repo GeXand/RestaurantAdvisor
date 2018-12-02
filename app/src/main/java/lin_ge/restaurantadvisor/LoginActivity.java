@@ -39,7 +39,7 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends AppCompatActivity  {
 
-    public static final String USER_EMAIL = "USER_EMAIL";
+    public static String USER_EMAIL = "USER_EMAIL";
     private EditText email;
     private EditText password;
     private Button login;
@@ -64,14 +64,14 @@ public class LoginActivity extends AppCompatActivity  {
                 attemptLogin(email.getText().toString(), password.getText().toString());
                 if(!canceled)
                 {
-                    Intent i = new Intent(LoginActivity.this, SearchActivity.class);
-                    i.putExtra(LoginActivity.USER_EMAIL, email.getText());
-                    startActivity(i);
+                    if(!MainActivity.login.isThereUser(email.getText().toString()))
+                        MainActivity.login.addUser(email.getText().toString(),password.getText().toString());
+                    Intent intent = new Intent(LoginActivity.this, SearchActivity.class);
+                    USER_EMAIL = email.getText().toString();
+                    startActivity(intent);
                 }
 
                 else {
-                    if(!(MainActivity.login.isThereUser(email.toString()) && MainActivity.login.findUser(email.toString()).equals((password))))
-                        MainActivity.login.addUser(email.toString(),password.toString());
                     email.setText("");
                     password.setText("");
                     Toast toast = Toast.makeText(getApplicationContext(), "Invalid Email/Password", Toast.LENGTH_SHORT);
