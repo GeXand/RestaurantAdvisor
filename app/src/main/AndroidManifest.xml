@@ -45,14 +45,6 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".activities.SearchResultsActivity"
-            android:exported="true"
-            android:label="Restaurants">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".activities.ReviewActivity"
             android:exported="true"
             android:label="Add Review"
