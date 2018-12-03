@@ -9,7 +9,11 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.Restaurant;
 import lin_ge.restaurantadvisor.components.Review;
 
 public class ReviewActivity extends AppCompatActivity {
@@ -35,15 +39,27 @@ public class ReviewActivity extends AppCompatActivity {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Restaurant curRestaurant = SearchActivity.restaurants;
                 //Add to all review list
-                Review temp = new Review(LoginActivity.USER_EMAIL,mEText.getText().toString(),mRBar.getRating(), SearchActivity.restaurants.getID());
-                MainActivity.reviews.enqueue(temp);
+                Review newRating = new Review(LoginActivity.USER_EMAIL,mEText.getText().toString(),mRBar.getRating(), curRestaurant.getID());
+                MainActivity.reviews.enqueue(newRating);
+
+                ArrayList<Review> restaurantReviews = new ArrayList<Review>();
+                float totalRating = 0;
+                for(int i = 0; i < MainActivity.reviews.size(); i++)
+                {
+                    Review cur = MainActivity.reviews.dequeue();
+                    if(cur.getRestaurantID() == curRestaurant.getID()) {
+                        restaurantReviews.add(cur);
+                        totalRating += cur.getRating();
+                    }
+                    MainActivity.reviews.enqueue(cur);
+                }
+
+                curRestaurant.setRating(totalRating / restaurantReviews.size());
 
                 Intent intent = new Intent();
-                //startActivity(new Intent(ReviewActivity.this, RestaurantActivity.class));
-                setResult(RESULT_OK);
-
-                finish();
+                startActivity(new Intent(ReviewActivity.this, RestaurantActivity.class));
             }
         });
     }

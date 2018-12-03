@@ -9,7 +9,7 @@ public class Restaurant implements Serializable {
     private String email;
     private String name;
     private int id;//predetermined
-    private int rating;//we will figure this out by taking the average of all reviews: if none then we'll just take it from another site like zomato
+    private float rating;//we will figure this out by taking the average of all reviews: if none then we'll just take it from another site like zomato
     private String phoneNumber;
     private String hourOfOperation;
     private String typeOfDining;
@@ -41,7 +41,8 @@ public class Restaurant implements Serializable {
         return id;
     }
 
-    public int getRating()
+    public void setRating(float rating) { this.rating = rating; }
+    public float getRating()
     {
         return rating;
     }
