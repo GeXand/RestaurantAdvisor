@@ -3,17 +3,29 @@ package lin_ge.restaurantadvisor.components;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import lin_ge.restaurantadvisor.components.FoodItems;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+@Entity
 public class Restaurant implements Serializable {
+    @ColumnInfo
     private String email;
+    @ColumnInfo
     private String name;
+    @PrimaryKey
     private int id;//predetermined
+    @ColumnInfo
     private float rating;//we will figure this out by taking the average of all reviews: if none then we'll just take it from another site like zomato
+    @ColumnInfo
     private String phoneNumber;
-    private String hourOfOperation;
+    @ColumnInfo
+    private String hoursOfOperation ;
+    @ColumnInfo
     private String typeOfDining;
+    @ColumnInfo
     private String typeOfCuisine;
+    @ColumnInfo
     private String priceRange;
     private ArrayList<FoodItems> food;
 
@@ -23,7 +35,7 @@ public class Restaurant implements Serializable {
         this.id = id;
         this.rating = rating;
         this.phoneNumber = phoneNumber;
-        this.hourOfOperation = hourOfOperation;
+        this.hoursOfOperation = hourOfOperation;
         this.email = email;
         this.typeOfDining = typeOfDining;
         this.typeOfCuisine = typeOfCuisine;
@@ -52,9 +64,9 @@ public class Restaurant implements Serializable {
         return phoneNumber;
     }
 
-    public String getHourOfOperation()
+    public String getHoursOfOperation()
     {
-        return hourOfOperation;
+        return hoursOfOperation;
     }
     public String getEmail()
     {
@@ -91,12 +103,12 @@ public class Restaurant implements Serializable {
     {
         return name + "" + "email:" + email + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
                  typeOfDining + "" + "priceRange" + priceRange + " rating" +
-                rating + " hour of operations" + hourOfOperation;
+                rating + " hour of operations" + hoursOfOperation;
     }
 
     public String toDescription()
     {
         return "email: " + email + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
-                typeOfDining + "\n" + "priceRange: " + priceRange + "\nhour of operations: " + hourOfOperation;
+                typeOfDining + "\n" + "priceRange: " + priceRange + "\nhour of operations: " + hoursOfOperation;
     }
 }

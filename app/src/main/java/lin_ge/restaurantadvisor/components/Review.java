@@ -7,16 +7,24 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Iterator;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+
 //sources
 //https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array
 
+@Entity()
 public class Review implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
+    @ColumnInfo
     private String user;
+    @ColumnInfo
     private String text;
+    @ColumnInfo
     private float rating; //0-5
+    @ColumnInfo
     private int restaurantID;
 
     public Review()
