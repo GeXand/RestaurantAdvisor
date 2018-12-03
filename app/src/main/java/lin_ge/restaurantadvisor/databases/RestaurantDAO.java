@@ -17,7 +17,7 @@ public interface RestaurantDAO {
     List<Restaurant> findByName(String name);
 
     @Insert
-    void insertAll(Restaurant...restuarants);
+    void insertAll(Restaurant...restaurants);
 
     @Delete
     void delete(Restaurant restaurant);

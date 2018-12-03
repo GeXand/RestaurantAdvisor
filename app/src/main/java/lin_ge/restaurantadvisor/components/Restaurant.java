@@ -5,16 +5,20 @@ import java.util.ArrayList;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Fts4;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+@Fts4
 @Entity
 public class Restaurant implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "rowid")
+    private int id;//predetermined
     @ColumnInfo
-    private String email;
+    private String website;
     @ColumnInfo
     private String name;
-    @PrimaryKey
-    private int id;//predetermined
     @ColumnInfo
     private float rating;//we will figure this out by taking the average of all reviews: if none then we'll just take it from another site like zomato
     @ColumnInfo
@@ -27,28 +31,31 @@ public class Restaurant implements Serializable {
     private String typeOfCuisine;
     @ColumnInfo
     private String priceRange;
+    @Ignore
     private ArrayList<FoodItems> food;
 
-    public Restaurant(String name, int id, int rating, String phoneNumber, String hourOfOperation, String typeOfDining, String typeOfCuisine, String priceRange, String email)
+    public Restaurant(int id, String website, String name, int rating, String phoneNumber, String hoursOfOperation, String typeOfDining, String typeOfCuisine, String priceRange)
     {
         this.name = name;
         this.id = id;
         this.rating = rating;
         this.phoneNumber = phoneNumber;
-        this.hoursOfOperation = hourOfOperation;
-        this.email = email;
+        this.hoursOfOperation = hoursOfOperation;
+        this.website = website;
         this.typeOfDining = typeOfDining;
         this.typeOfCuisine = typeOfCuisine;
         this.priceRange = priceRange;
         food = new ArrayList<FoodItems>();
     }
 
+    public void setName(String newName) { name = newName; }
     public String getName()
     {
         return name;
     }
 
-    public int getID()
+    public void setId(int id) {this.id = id; }
+    public int getId()
     {
         return id;
     }
@@ -59,30 +66,36 @@ public class Restaurant implements Serializable {
         return rating;
     }
 
+    public void setPhoneNumber(String newPhoneNumber) { phoneNumber = newPhoneNumber; }
     public String getPhoneNumber()
     {
         return phoneNumber;
     }
 
+
+    public void setHoursOfOperation(String newHoursOfOperation) { hoursOfOperation = newHoursOfOperation; }
     public String getHoursOfOperation()
     {
         return hoursOfOperation;
     }
-    public String getEmail()
+
+    public void setWebsite(String url) { website = url; }
+    public String getWebsite()
     {
-        return email;
+        return website;
     }
 
-    public String getTypeOfDining()
-    {
-        return typeOfDining;
-    }
+    public void setTypeOfDining(String newTypeof) { typeOfDining = newTypeof;}
+    public String getTypeOfDining() { return typeOfDining; }
 
+    public void setTypeOfCuisine(String newTypeOf) { typeOfCuisine  = newTypeOf; }
     public String getTypeOfCuisine()
     {
         return typeOfCuisine;
     }
 
+
+    public void setPriceRange(String newPrice) {priceRange = newPrice; }
     public String getPriceRange()
     {
         return priceRange;
@@ -101,14 +114,14 @@ public class Restaurant implements Serializable {
 
     public String toString()
     {
-        return name + "" + "email:" + email + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
+        return name + "" + "website:" + website + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
                  typeOfDining + "" + "priceRange" + priceRange + " rating" +
                 rating + " hour of operations" + hoursOfOperation;
     }
 
     public String toDescription()
     {
-        return "email: " + email + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
+        return "website: " + website + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
                 typeOfDining + "\n" + "priceRange: " + priceRange + "\nhour of operations: " + hoursOfOperation;
     }
 }

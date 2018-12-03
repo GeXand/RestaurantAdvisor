@@ -9,15 +9,19 @@ import java.util.Iterator;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
 
 //sources
 //https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array
 
-@Entity()
+@Entity(foreignKeys = @ForeignKey(entity = Restaurant.class, parentColumns = "rowid", childColumns = "restaurantID"))
 public class Review implements Serializable{
 
     private static final long serialVersionUID = 1L;
 
+    @PrimaryKey
+    private int id;
     @ColumnInfo
     private String user;
     @ColumnInfo
@@ -33,60 +37,41 @@ public class Review implements Serializable{
         rating = 0;
     }
 
-    public Review(String username, String reviewText, float rate, int id) {
+    public Review(int id, String username, String reviewText, float rate, int restaurantID) {
+        this.id = id;
         user = username;
         text = reviewText;
         rating = rate;
-        restaurantID = id;
+        this.restaurantID = restaurantID;
     }
 
+    public void setId(int newID) { id = newID; }
+    public int getId() { return id; }
+
+    public void setUser(String newUser) { user = newUser; }
     public String getUser() { return user; }
 
+    public void setRestaurantID(int newRestaurantID) { restaurantID = newRestaurantID; }
     public int getRestaurantID() { return restaurantID; }
 
-    /**
-     * gets the text
-     * @return text
-     */
-    public String getText()
+    public void setText(String text)
     {
-        return text;
+        this.text = text;
     }
+    public String getText() { return text; }
 
-    /**
-     * get full text
-     * @return full text
-     */
     public String getReviewText()
     {
         return user + ": " + text;
     }
 
-    /**
-     * sets review to text
-     * @param text
-     */
-    public void setText(String text)
-    {
-        this.text = text;
-    }
-
-    /**
-     * get reviewer rating
-     * @return rating
-     */
-    public float getRating()
-    {
-        return rating;
-    }
-
-    /**
-     * sets the rating to something new
-     * @param rating
-     */
     public void setRating(int rating)
     {
         this.rating = rating;
+    }
+    public float getRating()
+    {
+        return rating;
     }
 
     @Override
