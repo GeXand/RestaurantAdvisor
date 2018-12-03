@@ -1,10 +1,12 @@
 package lin_ge.restaurantadvisor.activities;
 
 import android.content.Context;
+import android.media.Rating;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -33,7 +35,7 @@ public class RestaurantListViewAdapter extends BaseAdapter {
 
     public class ViewHolder {
         TextView name;
-        TextView price;
+        RatingBar ratingBar;
     }
 
     @Override
@@ -58,14 +60,14 @@ public class RestaurantListViewAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.activity_restaurant_list_view_item, null);
             // Locate the TextViews in listview_item.xml
             holder.name = (TextView) view.findViewById(R.id.RestaurantName);
-            holder.price = (TextView) view.findViewById(R.id.priceRange);
+            holder.ratingBar = (RatingBar) view.findViewById(R.id.ratingBar);
             view.setTag(holder);
         } else {
             holder = (ViewHolder) view.getTag();
         }
         // Set the results into TextViews
         holder.name.setText(restaurantNameList.get(position).getName());
-        holder.price.setText(restaurantNameList.get(position).getPriceRange());
+        holder.ratingBar.setRating(restaurantNameList.get(position).getRating());
         return view;
     }
 
@@ -84,4 +86,5 @@ public class RestaurantListViewAdapter extends BaseAdapter {
         }
         notifyDataSetChanged();
     }
+
 }

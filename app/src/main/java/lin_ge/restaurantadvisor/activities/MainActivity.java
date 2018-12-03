@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 import lin_ge.restaurantadvisor.R;
+import lin_ge.restaurantadvisor.components.Restaurant;
 import lin_ge.restaurantadvisor.components.Review;
 import lin_ge.restaurantadvisor.components.Login_System;
 import lin_ge.restaurantadvisor.dataStructures.DSUnboundedQueue;
@@ -15,13 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
     public static Login_System login;//login system that holds all emails and passwords
     public static DSUnboundedQueue<Review> reviews;
+    public static ArrayList<Restaurant> restaurantArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-       login = Login_System.deserializeOBJ();
-       reviews = new DSUnboundedQueue<Review>();
+        login = Login_System.deserializeOBJ();
+        reviews = new DSUnboundedQueue<Review>();
+        restaurantArrayList = new ArrayList<Restaurant>();
+        Restaurant r1 = new Restaurant("Domino's", 0, 0, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
+        Restaurant r2 = new Restaurant("Applebee's", 1, 0, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
+        Restaurant r3 = new Restaurant("Friday's", 2, 0, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
+        restaurantArrayList.add(r1);
+        restaurantArrayList.add(r2);
+        restaurantArrayList.add(r3);
 
         Button loginButton = (Button) findViewById(R.id.login);
         Button guestButton = (Button) findViewById(R.id.guest);

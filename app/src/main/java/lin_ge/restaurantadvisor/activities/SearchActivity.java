@@ -22,7 +22,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     RestaurantListViewAdapter adapter;
     SearchView editsearch;
     public static Restaurant restaurants;
-    ArrayList<Restaurant> arraylist = new ArrayList<Restaurant>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +34,8 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
 
         list = (ListView) findViewById(R.id.restaurantlistview);
 
-        Restaurant r1 = new Restaurant("Dominos", 0, 2, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
-        Restaurant r2 = new Restaurant("Apple Bee", 1, 2, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
-        Restaurant r3 = new Restaurant("Friday", 2, 2, "262-9369-493", "10AM-9PM", "Fine Dining", "Fast Food", "$2-$6", "---");
-        arraylist.add(r1);
-        arraylist.add(r2);
-        arraylist.add(r3);
-
         // Pass results to ListViewAdapter Class
-        adapter = new RestaurantListViewAdapter(this, arraylist);
+        adapter = new RestaurantListViewAdapter(this, MainActivity.restaurantArrayList);
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
@@ -53,7 +46,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                restaurants = arraylist.get(position);
+                restaurants = MainActivity.restaurantArrayList.get(position);
                 startActivity(intent);
             }
         });

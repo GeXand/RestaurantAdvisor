@@ -6,19 +6,17 @@
     android:layout_height="fill_parent"
     android:padding="10dp">
 
-    <TextView
-        android:id="@+id/priceRange"
+    <RatingBar
+        android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginLeft="120dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginRight="19dp"
-        android:text="PriceRange"
-        android:textSize="24dp"
+        style="?android:attr/ratingBarStyleSmall"
+        android:clickable="false"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.5"
         app:layout_constraintStart_toEndOf="@+id/RestaurantName"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +24,7 @@
         android:id="@+id/RestaurantName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/priceRange"
+        android:layout_alignTop="@+id/ratingBar"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="16dp"
