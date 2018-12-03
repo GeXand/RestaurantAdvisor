@@ -3,17 +3,17 @@ package lin_ge.restaurantadvisor.components;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Fts4;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Fts4
-@Entity
+@Entity(tableName = "restaurants")
 public class Restaurant implements Serializable {
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "rowid")
+    @NonNull
     private int id;//predetermined
     @ColumnInfo
     private String website;
@@ -34,7 +34,7 @@ public class Restaurant implements Serializable {
     @Ignore
     private ArrayList<FoodItems> food;
 
-    public Restaurant(int id, String website, String name, int rating, String phoneNumber, String hoursOfOperation, String typeOfDining, String typeOfCuisine, String priceRange)
+    public Restaurant(int id, String website, String name, float rating, String phoneNumber, String hoursOfOperation, String typeOfDining, String typeOfCuisine, String priceRange)
     {
         this.name = name;
         this.id = id;

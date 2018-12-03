@@ -15,7 +15,7 @@ import androidx.room.PrimaryKey;
 //sources
 //https://stackoverflow.com/questions/27409718/java-reading-multiple-objects-from-a-file-as-they-were-in-an-array
 
-@Entity(foreignKeys = @ForeignKey(entity = Restaurant.class, parentColumns = "rowid", childColumns = "restaurantID"))
+@Entity(tableName =  "reviews", foreignKeys = @ForeignKey(entity = Restaurant.class, parentColumns = "id", childColumns = "restaurantID"))
 public class Review implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -65,7 +65,7 @@ public class Review implements Serializable{
         return user + ": " + text;
     }
 
-    public void setRating(int rating)
+    public void setRating(float rating)
     {
         this.rating = rating;
     }
