@@ -34,6 +34,8 @@ public class ReviewActivity extends AppCompatActivity {
         mEText = (EditText) findViewById(R.id.editText);
 
 
+
+
         mTView.setText("Write a Review");
 
         mButton.setOnClickListener(new View.OnClickListener() {

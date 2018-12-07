@@ -156,7 +156,7 @@ public class RestaurantActivity extends AppCompatActivity {
         for(int i = 0; i < size; i++)
         {
             Review temp = MainActivity.reviews.dequeue();
-            if(temp.getRestaurantID() == restaurant.getID()) {
+            if(temp.getRestaurantID() == restaurant.getId()) {
                 reviews.add(temp.getText());
                 rating.add((float)temp.getRating());
             }

@@ -10,11 +10,13 @@ import android.widget.SearchView;
 
 import java.util.ArrayList;
 
+import androidx.room.Room;
 import lin_ge.restaurantadvisor.R;
 import lin_ge.restaurantadvisor.activities.LoginActivity;
 import lin_ge.restaurantadvisor.activities.RestaurantActivity;
 import lin_ge.restaurantadvisor.activities.RestaurantListViewAdapter;
 import lin_ge.restaurantadvisor.components.Restaurant;
+import lin_ge.restaurantadvisor.databases.RestaurantDatabase;
 
 public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
