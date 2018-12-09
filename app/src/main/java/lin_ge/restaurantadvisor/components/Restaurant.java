@@ -3,30 +3,26 @@ package lin_ge.restaurantadvisor.components;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import lin_ge.restaurantadvisor.components.FoodItems;
-
 public class Restaurant implements Serializable {
-    private String email;
+    private String address;
     private String name;
     private int id;//predetermined
     private float rating;//we will figure this out by taking the average of all reviews: if none then we'll just take it from another site like zomato
     private String phoneNumber;
-    private String hourOfOperation;
-    private String typeOfDining;
-    private String typeOfCuisine;
+    private String hoursOfOperation;
+    private String typeOfDiningCuisine;
     private String priceRange;
     private ArrayList<FoodItems> food;
 
-    public Restaurant(String name, int id, int rating, String phoneNumber, String hourOfOperation, String typeOfDining, String typeOfCuisine, String priceRange, String email)
+    public Restaurant(String name, int id, int rating, String phoneNumber, String hourOfOperation, String typeOfDiningCuisine, String priceRange, String email)
     {
         this.name = name;
         this.id = id;
         this.rating = rating;
         this.phoneNumber = phoneNumber;
-        this.hourOfOperation = hourOfOperation;
-        this.email = email;
-        this.typeOfDining = typeOfDining;
-        this.typeOfCuisine = typeOfCuisine;
+        this.hoursOfOperation = hourOfOperation;
+        this.address = email;
+        this.typeOfDiningCuisine = typeOfDiningCuisine;
         this.priceRange = priceRange;
         food = new ArrayList<FoodItems>();
     }
@@ -52,23 +48,18 @@ public class Restaurant implements Serializable {
         return phoneNumber;
     }
 
-    public String getHourOfOperation()
+    public String getHoursOfOperation()
     {
-        return hourOfOperation;
+        return hoursOfOperation;
     }
     public String getEmail()
     {
-        return email;
+        return address;
     }
 
     public String getTypeOfDining()
     {
-        return typeOfDining;
-    }
-
-    public String getTypeOfCuisine()
-    {
-        return typeOfCuisine;
+        return typeOfDiningCuisine;
     }
 
     public String getPriceRange()
@@ -89,14 +80,14 @@ public class Restaurant implements Serializable {
 
     public String toString()
     {
-        return name + "" + "email:" + email + " phoneNumber:" + phoneNumber + " Cuisine type:" + typeOfCuisine + " Dining type:" +
-                 typeOfDining + "" + "priceRange" + priceRange + " rating" +
-                rating + " hour of operations" + hourOfOperation;
+        return name + "" + "email:" + address + " phoneNumber:" + phoneNumber + " Cuisine type:" +
+                 typeOfDiningCuisine + "" + "priceRange" + priceRange + " rating" +
+                rating + " hour of operations" + hoursOfOperation;
     }
 
     public String toDescription()
     {
-        return "email: " + email + "\nphoneNumber: " + phoneNumber + "\nCuisine type: " + typeOfCuisine + "\nDining type:" +
-                typeOfDining + "\n" + "priceRange: " + priceRange + "\nhour of operations: " + hourOfOperation;
+        return "Address: " + address + "\nPhone Number: " + phoneNumber + "\nCuisine\\Dining: " +
+                typeOfDiningCuisine + "\n" + "Price Range: " + priceRange + "\nHours of Operation: " + hoursOfOperation;
     }
 }
