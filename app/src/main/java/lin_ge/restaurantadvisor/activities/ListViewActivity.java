@@ -1,9 +1,9 @@
 package lin_ge.restaurantadvisor.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
 import lin_ge.restaurantadvisor.R;
 
 public class ListViewActivity extends AppCompatActivity {

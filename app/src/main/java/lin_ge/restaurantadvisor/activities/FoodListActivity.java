@@ -1,7 +1,6 @@
 package lin_ge.restaurantadvisor.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +9,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import androidx.appcompat.app.AppCompatActivity;
 import lin_ge.restaurantadvisor.R;
 import lin_ge.restaurantadvisor.components.FoodItems;
 

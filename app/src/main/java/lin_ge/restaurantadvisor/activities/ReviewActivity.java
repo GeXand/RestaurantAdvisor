@@ -2,7 +2,6 @@ package lin_ge.restaurantadvisor.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 import lin_ge.restaurantadvisor.R;
 import lin_ge.restaurantadvisor.components.Restaurant;

@@ -1,7 +1,6 @@
 package lin_ge.restaurantadvisor.activities;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import androidx.annotation.Nullable;
 import lin_ge.restaurantadvisor.R;
 import lin_ge.restaurantadvisor.components.FoodItems;
 
