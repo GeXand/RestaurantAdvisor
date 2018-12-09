@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.room.Room;
 import lin_ge.restaurantadvisor.R;
@@ -24,6 +25,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
     RestaurantListViewAdapter adapter;
     SearchView editsearch;
     public static Restaurant restaurants;
+    private static List<Restaurant> restaurantArrayList;
 
 
     @Override
@@ -35,9 +37,10 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         String email = i.getStringExtra(LoginActivity.USER_EMAIL);
 
         list = (ListView) findViewById(R.id.restaurantlistview);
+        restaurantArrayList = MainActivity.restaurantdb.restaurantDAO().getAll();
 
         // Pass results to ListViewAdapter Class
-        adapter = new RestaurantListViewAdapter(this, MainActivity.restaurantArrayList);
+        adapter = new RestaurantListViewAdapter(this, restaurantArrayList);
 
         // Binds the Adapter to the ListView
         list.setAdapter(adapter);
@@ -48,7 +51,7 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent intent = new Intent(getApplicationContext(), RestaurantActivity.class);
-                restaurants = MainActivity.restaurantArrayList.get(position);
+                restaurants = restaurantArrayList.get(position);
                 startActivity(intent);
             }
         });

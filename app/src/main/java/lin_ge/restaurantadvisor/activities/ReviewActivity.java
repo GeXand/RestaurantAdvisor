@@ -12,15 +12,18 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.room.Room;
 import lin_ge.restaurantadvisor.R;
 import lin_ge.restaurantadvisor.components.Restaurant;
 import lin_ge.restaurantadvisor.components.Review;
+import lin_ge.restaurantadvisor.databases.ReviewDatabase;
 
 public class ReviewActivity extends AppCompatActivity {
     private RatingBar mRBar;
     private Button mButton;
     private TextView mTView;
     private EditText mEText;
+    public ReviewDatabase reviewDb = Room.databaseBuilder(getApplicationContext(), ReviewDatabase.class, "reviews").build();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -43,7 +46,7 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Restaurant curRestaurant = SearchActivity.restaurants;
                 //Add to all review list
-                Review newRating = new Review(LoginActivity.USER_EMAIL,mEText.getText().toString(),mRBar.getRating(), curRestaurant.getID());
+                Review newRating = new Review(0, LoginActivity.USER_EMAIL,mEText.getText().toString(),mRBar.getRating(), curRestaurant.getId());
                 MainActivity.reviews.enqueue(newRating);
 
                 ArrayList<Review> restaurantReviews = new ArrayList<Review>();
@@ -51,7 +54,7 @@ public class ReviewActivity extends AppCompatActivity {
                 for(int i = 0; i < MainActivity.reviews.size(); i++)
                 {
                     Review cur = MainActivity.reviews.dequeue();
-                    if(cur.getRestaurantID() == curRestaurant.getID()) {
+                    if(cur.getRestaurantID() == curRestaurant.getId()) {
                         restaurantReviews.add(cur);
                         totalRating += cur.getRating();
                     }

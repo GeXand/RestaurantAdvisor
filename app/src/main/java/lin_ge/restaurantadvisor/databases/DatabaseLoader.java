@@ -15,7 +15,8 @@ import lin_ge.restaurantadvisor.components.Restaurant;
 import static java.lang.System.in;
 
 public class DatabaseLoader {
-    public static void fillDatabase(String restaurantJsonFile) throws Exception {
+
+    public static void fillDatabase(String restaurantJsonFile, RestaurantDatabase db) throws Exception {
         Object JSONFile = new JSONParser().parse(new FileReader(restaurantJsonFile));
         JSONObject jsonObject = (JSONObject) JSONFile;
         JSONArray restaurants = (JSONArray) jsonObject.get("restaurants");
@@ -23,8 +24,6 @@ public class DatabaseLoader {
         for (int i = 0; i < restaurants.size(); i++) {
             JSONObject joCur = (JSONObject) restaurants.get(i);
             JSONObject curRestaurant = (JSONObject) joCur.get("restaurant");
-
-
 
         }
     }
