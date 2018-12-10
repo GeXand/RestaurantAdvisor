@@ -12,12 +12,9 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:fontFamily="sans-serif"
-        android:text="Order"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Menu"
+        app:layout_constraintStart_toEndOf="@id/addReview"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
@@ -29,14 +26,14 @@
         android:layout_marginTop="8dp"
         android:fontFamily="casual"
         android:text="Restaurant Name"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RatingBar
         android:id="@+id/restaurantRating"
-        style="@style/Widget.AppCompat.RatingBar.Indicator"
+        style="?android:attr/ratingBarStyleIndicator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -47,24 +44,26 @@
         android:numStars="5"
         android:stepSize="0.5"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="187dp"
-        android:layout_height="150dp"
-        android:text="Description"
-        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <TextView
+        android:id="@+id/description"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="8dp"
+        android:text="Description"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restaurantRating" />
+
+    <TextView
         android:id="@+id/review"
         android:layout_width="match_parent"
-        android:layout_height="167dp"
+        android:layout_height="150dp"
         android:layout_marginBottom="4dp"
-        android:text="review"
+        android:text="No Reviews Yet"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -74,11 +73,9 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:text="Add Review"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toEndOf="@id/restaurantRating"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <RatingBar
         android:id="@+id/reviewRatingBar"

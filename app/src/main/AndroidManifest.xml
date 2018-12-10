@@ -70,7 +70,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="lin_ge.restaurantadvisor.activities.RestaurantActivity" />
         </activity>
-        <activity android:name=".activities.RestaurantActivity"></activity>
+        <activity
+            android:name=".activities.RestaurantActivity"
+            android:exported="true"
+            android:label="Restaurant">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="lin_ge.restaurantadvisor.activities.SearchActivity" />
+        </activity>
     </application>
 
 </manifest>
